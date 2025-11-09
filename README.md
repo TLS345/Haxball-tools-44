@@ -1,58 +1,94 @@
-## Haxball Tools Day 44
+# 🏟️ Haxball Rooms Bot
 
-This is a **demo/documentation** repository for the Anthesis Bot.  
-The bot allows querying Haxball rooms and displaying detailed information in **interactive embeds**.
+A **Discord bot** that lets you check **Haxball rooms** directly from your server. It shows detailed info like players, country, version, occupancy, and more in a **cool embed**.
 
-## 🔗 Invite the Bot
+---
 
-Click [here](https://discord.com/oauth2/authorize?client_id=1126756110116855818) to invite the bot to your server.
+## ⚡ Features
 
-## How to Use 🎮🤖
-
-1. **Invite the bot** to your server using the provided link 🔗.
-
-2. In any text channel, type the command:
-
-```
-!haxrooms <room_id>
-```
-
-3. Replace `<room_id>` with the Haxball room ID you want to query 🏟️.
-
-**Example:**
-
-```
-!haxrooms TFsAAHQg66A
-```
-
-## 📂 Directory Structure 
-
-```
-haxball-discord-bot-demo/
-│
-├─ README.md
-├─ config.example.json
-└─ demo.js
-```
-## Features
-- Query rooms by ID (`!haxrooms <id>`)
-- Displayed information:
-  - Room ID
-  - Room Name
-  - Players / Maximum
-  - Password
+- Query Haxball rooms by ID using `!haxrooms <ID>`.
+- Displays detailed room info:
+  - Room name
+  - ID
+  - Current players / limit
+  - Password (yes/no)
   - Country (with flag emoji)
-  - Latitude / Longitude
-  - Version
-  - Occupancy bar
+  - Latitude & Longitude
+  - Game version
+  - Visual occupancy bar 🟧⬛
+  - Direct join link
+- Embed colors based on occupancy:
+  - Green: room has space
+  - Orange: room almost full
+  - Red: room full
 
-## Note
-This repository **does NOT include the real bot code or tokens**.  
-It is intended only for **documentation and demonstration**.
+---
 
+## 🛠️ Technologies
 
+- [Node.js](https://nodejs.org/)
+- [discord.js v14](https://discord.js.org/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [node-fetch](https://www.npmjs.com/package/node-fetch)
 
+---
 
+## 🚀 Installation
 
+1. Clone this repository:
 
+```bash
+git clone https://github.com/TLS345/Haxball-tools-44
+cd Haxball-tools-44
+````
 
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root folder with your Discord token:
+
+```env
+TOKEN=YOUR_DISCORD_BOT_TOKEN
+```
+
+4. Run the bot:
+
+```bash
+node bot.js
+```
+
+---
+
+## 💬 Usage
+
+In your Discord server, type:
+
+```
+!haxrooms <ROOM_ID>
+```
+
+Example:
+
+```
+!haxrooms 12345
+```
+
+The bot will respond with an **embed** showing all the room information.
+
+---
+
+## 🔗 Direct Room Link
+
+Each embed includes a direct link to join the Haxball room, including the password if needed.
+
+---
+
+## ⚙️ Internal Features
+
+* `Reader`: decodes Haxball rooms binary data.
+* `getFlagEmoji()`: converts ISO country codes into emojis.
+* `occupancyBar()`: generates a visual occupancy bar.
+* Error handling and validations to prevent crashes if the room doesn’t exist.
